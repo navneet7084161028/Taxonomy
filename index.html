@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>appendchild</title>
+	<style type="text/css">
+		#demo,#demo1,#demo2,#demo3,#demo4,#demo5{
+			height:40px;
+			/*background-color: pink;*/
+			border-radius: 7px;
+			/*border: 2px solid red;*/
+			/*color: blue;*/
+			font-size: 20px;
+			font-weight: bolder;
+			 -webkit-appearance: none;
+			 margin-left: 5%;
+		}
+	</style>
+</head>
+<body>
+<select id="demo"></select><br><br>
+<select id="demo1" style="display: none;"></select><br><br>
+<select id="demo2" style="display: none;"></select><br><br>
+<select id="demo3" style="display: none;"></select><br><br>
+<select id="demo4" style="display: none;"></select><br><br>
+<select id="demo5" style="display: none;"></select>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+var arr, arr1, arr2, arr3, arr4, arr5;
+var obj = {};
+var s,d,e,f,g,h;
+// var preVal,preVal1,preVal2;
+// var pan,pan1;
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt')
+
+.then(e=>e.text())
+.then(req => {
+  let a = req;
+  let b =a.split('\n');
+  b.shift();
+  b.pop();
+  var b1 = b.map(abc=> abc.split('-')[1]);
+  b1.forEach
+  (element=>
+  		{var c=element.split('>');
+  				
+  		      // console.log(c);
+				  if(c.length == 1)
+				  {
+
+				  	 s = c[0];
+				  	obj[s] = {};
+
+  					 arr = arr+"<option value='"+c+"'>"+c+"</option>";
+				  	}
+  				else if(c.length == 2){
+
+  					 d = c[1];
+  					obj[s][d] = {};	
+
+  					c.shift();
+  					arr1 = arr1+"<option value='"+c+"'>"+c+"</option>";
+  				}
+  				else if(c.length == 3){
+
+  					e = c[2];
+  					obj[s][d][e] = {};	
+
+  					c.shift();
+  					c.shift();
+  					arr2 = arr2+"<option value='"+c+"'>"+c+"</option>";
+  				}
+  				else if(c.length == 4){
+
+  					f = c[3];
+  					obj[s][d][e][f] = {};
+
+  					c.shift();
+  					c.shift();
+  					c.shift();
+  					arr3 = arr3+"<option value='"+c+"'>"+c+"</option>";
+  				}
+  				else if(c.length == 5){
+
+  					g = c[4]
+  					obj[s][d][e][f][g] = {};
+
+  					c.shift();
+  					c.shift();
+  					c.shift();
+  					c.shift();
+  					arr4 = arr4+"<option value='"+c+"'>"+c+"</option>";
+  				}
+  				else if(c.length == 6){
+
+  					h = c[5]
+  					obj[s][d][e][f][g][h] = {};
+
+  					c.shift();
+  					c.shift();
+  					c.shift();
+  					c.shift();
+  					c.shift();
+  					arr5 = arr5+"<option value='"+c+"'>"+c+"</option>";
+  				}	
+  			})
+
+  			console.log(obj);
+
+  				$('#demo').append(arr);
+          $('#demo1').append(arr1);
+          $('#demo2').append(arr2);
+          $('#demo3').append(arr3);
+          $('#demo4').append(arr4);
+          $('#demo5').append(arr5);
+  		
+          $('#demo').change(function(){
+            $('#demo1').show();
+          });
+
+          $('#demo1').change(function(){
+            $('#demo2').show();
+          });
+
+  				$('#demo2').change(function(){
+  					$('#demo3').show();
+  				});			
+  				
+  				$('#demo3').change(function(){
+  					$('#demo4').show();
+  				});
+
+  				$('#demo4').change(function(){
+  					$('#demo5').show();
+  				});
+
+  				// $('#demo5').change(function(){
+  				// 	$('#demo6').show();
+  				// });				
+		})
+
+</script>
+</body>
+</html>

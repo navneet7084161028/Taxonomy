@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>appendchild with function</title>
+    <style type="text/css">
+    #demo,#demo1,#demo2,#demo3,#demo4,#demo5,#demo6{
+      height:40px;
+      background-color: pink;
+      border-radius: 7px;
+      border: 2px solid red;
+      color: blue;
+      font-size: 20px;
+      font-weight: bolder;
+       -webkit-appearance: none;
+    }
+  </style>
+</head>
+<body>
+<select id="demo" onchange="parent1()"></select><br><br>
+<select id="demo1" onchange="parent2()" style="display: none;"></select><br><br>
+<select id="demo2" onchange="parent3()" style="display: none;"></select><br><br>
+<select id="demo3" onchange="parent4()" style="display: none;"></select><br><br>
+<select id="demo4" onchange="parent5()" style="display: none;"></select><br><br>
+<select id="demo5" onchange="parent6()" style="display: none;"></select><br><br>
+<select id="demo6" style="display: none;"></select>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+var obj = {};
+var j,p,m,n,v;
+
+function parent()
+{
+  const arr=[];
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy.en-US.txt' )
+.then(e=>e.text())
+.then(req => {
+     var s = req.split('\n');
+     s.shift();
+     s.pop();
+     len=s.length;
+     
+     // console.log(obj);
+    for(var i=0;i<s.length;i++)
+    {
+       x = s[i].split('>');
+     if(x.length==1)
+     {  
+
+       j = x[0];
+
+       obj[j] = {};
+       // console.log(j);
+
+      $("#demo").append(`<option value='${x}'>${x}</option>`);  
+     }
+     
+    }
+    console.log(obj);
+  })
+
+}
+parent();
+// console.log(obj);
+
+function parent1()
+{
+  const arr=[];
+  $("#demo1").show();
+  $("#demo1").html("");
+  var val=$("#demo").val();
+  val = val.trim();
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy.en-US.txt' )
+.then(e=>e.text())
+.then(req => {
+     var s = req.split('\n');
+     s.shift();
+     s.pop();
+     len=s.length;
+     
+    for(var i=0;i<s.length;i++)
+    {
+       x = s[i].split('>');
+     if(x.length==2 && x[0].trim()==val)
+     {  
+
+        p = x[1];
+
+       obj[p] = {};
+
+        // console.log(x[1]);
+      $("#demo1").append(`<option value='${x[1]}'>${x[1]}</option>`);  
+     }
+     
+    }
+    // console.log(obj);
+  })
+}
+parent1(); 
+
+
+function parent2()
+{
+  const arr=[];
+  $("#demo2").show();
+  $("#demo2").html("");
+  var val=$("#demo1").val();
+  val = val.trim();
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy.en-US.txt' )
+.then(e=>e.text())
+.then(req => {
+     var s = req.split('\n');
+     s.shift();
+     s.pop();
+     len=s.length;
+     
+     // console.log(obj);
+    for(var i=0;i<s.length;i++)
+    {
+       x = s[i].split('>');
+     if(x.length==3 && x[1].trim()==val)
+     {  
+        // console.log(x[2]);
+      $("#demo2").append(`<option value='${x[2]}'>${x[2]}</option>`);  
+     }
+     
+    }
+  })
+}
+parent2();   
+
+
+function parent3()
+{
+  const arr=[];
+  $("#demo3").show();
+  $("#demo3").html("");
+  var val=$("#demo2").val();
+  val = val.trim();
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy.en-US.txt' )
+.then(e=>e.text())
+.then(req => {
+     var s = req.split('\n');
+     s.shift();
+     s.pop();
+     len=s.length;
+     
+     // console.log(obj);
+    for(var i=0;i<s.length;i++)
+    {
+       x = s[i].split('>');
+     if(x.length==4 && x[2].trim()==val)
+     {  
+        // console.log(x[3]);
+      $("#demo3").append(`<option value='${x[3]}'>${x[3]}</option>`);  
+     }
+     
+    }
+  })
+}
+parent3();   
+
+function parent4()
+{
+  const arr=[];
+  $("#demo4").show();
+  $("#demo4").html("");
+  var val=$("#demo3").val();
+  val = val.trim();
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy.en-US.txt' )
+.then(e=>e.text())
+.then(req => {
+     var s = req.split('\n');
+     s.shift();
+     s.pop();
+     len=s.length;
+     
+     // console.log(obj);
+    for(var i=0;i<s.length;i++)
+    {
+       x = s[i].split('>');
+     if(x.length==5 && x[3].trim()==val)
+     {  
+        // console.log(x[4]);
+      $("#demo4").append(`<option value='${x[4]}'>${x[4]}</option>`);  
+     }
+     
+    }
+  })
+}
+parent4();   
+
+function parent5()
+{
+  const arr=[];
+  $("#demo5").show();
+  $("#demo5").html("");
+  var val=$("#demo4").val();
+  val = val.trim();
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy.en-US.txt' )
+.then(e=>e.text())
+.then(req => {
+     var s = req.split('\n');
+     s.shift();
+     s.pop();
+     len=s.length;
+     
+     // console.log(obj);
+    for(var i=0;i<s.length;i++)
+    {
+       x = s[i].split('>');
+     if(x.length==6 && x[4].trim()==val)
+     {  
+        // console.log(x[4]);
+      $("#demo5").append(`<option value='${x[5]}'>${x[5]}</option>`);  
+     }
+     
+    }
+  })
+}
+parent5();  
+
+
+
+function parent6()
+{
+  const arr=[];
+  $("#demo6").show();
+  $("#demo6").html("");
+  var val=$("#demo5").val();
+  val = val.trim();
+const proxyUrl='https://cors-anywhere.herokuapp.com/';
+fetch( proxyUrl + 'https://www.google.com/basepages/producttype/taxonomy.en-US.txt' )
+.then(e=>e.text())
+.then(req => {
+     var s = req.split('\n');
+     s.shift();
+     s.pop();
+     len=s.length;
+     
+     // console.log(obj);
+    for(var i=0;i<s.length;i++)
+    {
+       x = s[i].split('>');
+     if(x.length==7 && x[5].trim()==val)
+     {  
+        // console.log(x[4]);
+      $("#demo6").append(`<option value='${x[6]}'>${x[6]}</option>`);  
+     }
+     
+    }
+  })
+}
+parent6();  
+
+// console.log(obj);
+
+</script>
+
+</body>
+</html>
